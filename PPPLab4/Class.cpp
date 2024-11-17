@@ -45,13 +45,13 @@ void Airport::ShowTariff() {
 
 void Airport::GetMaxTariff() {
     if (tariffs.empty()) {
-        cout << "Íåò òàðèôîâ" << endl;
+        cout << "ÐÐµÑ‚ Ñ‚Ð°Ñ€Ð¸Ñ„Ð¾Ð²" << endl;
         return;
     }
     ITariff* max_cost = tariffs[0];
     for (const auto& tarif : tariffs) {
         if (tarif->GetCost() > max_cost->GetCost()) max_cost = tarif;
     }
-    cout << "Ñòîèìîñòü áèëåòà - " << max_cost->GetCost()
-        << " ; Íàçâàíèå - " << max_cost->GetName() << endl;
+    cout << "Ð¡Ñ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ð±Ð¸Ð»ÐµÑ‚Ð° - " << max_cost->GetCost()
+        << " ; ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ - " << max_cost->GetName() << endl;
 }
