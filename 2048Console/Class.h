@@ -1,4 +1,5 @@
 #pragma once
+//#pragma pack 2
 class cell {
 private:
     unsigned int value : 11; // Значение клетки

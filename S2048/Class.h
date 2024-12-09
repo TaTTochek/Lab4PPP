@@ -1,7 +1,8 @@
 #pragma once
+
 class cell {
 private:
-    unsigned int value : 11; // Значение клетки
+    unsigned int value : 16; // Значение клетки
 
 public:
     cell();
@@ -26,7 +27,11 @@ public:
     ~mainGame2048();
 
     void playGame2048();
+    char playGame2048(char a);//
+    //
+
     void displayGrid(cell**& Grid) const;
+    int  displaycell(int x,int y);
     void horizontalMove(cell**& grid, bool key);
     void verticalMove(cell**& grid, bool key);
     int GetScore() const;

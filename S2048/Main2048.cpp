@@ -3,7 +3,7 @@
 #include <Windows.h>
 #include <iostream>
 
-int main() {
+int Game() {
     srand(time(NULL));
     system("chcp 1251");
     system("cls");

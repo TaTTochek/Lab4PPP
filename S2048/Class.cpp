@@ -3,7 +3,9 @@
 #include <iostream>
 #include <Windows.h>
 
+
 using namespace std;
+
 
 // Конструктор по умолчанию
 cell::cell() : value(0) {}
@@ -70,7 +72,7 @@ void mainGame2048::squash_array(cell col[GridSize], bool key)
             if (src < 0)
                 break;
             if (col[dest].getValue() == col[src].getValue()) {
-                col[dest].setValue(col[dest].getValue() * 2);
+                col[dest].setValue(col[dest].getValue() << 1);
                 col[src].setValue(0);
             }
             if (col[dest].getValue() == 0) {
@@ -87,7 +89,7 @@ void mainGame2048::squash_array(cell col[GridSize], bool key)
             if (src > GridSize - 1)
                 break;
             if (col[dest].getValue() == col[src].getValue()) {
-                col[dest].setValue(col[dest].getValue() * 2);
+                col[dest].setValue(col[dest].getValue() << 1);
                 col[src].setValue(0);
             }
             if (col[dest].getValue() == 0) {
@@ -119,8 +121,13 @@ void mainGame2048::displayGrid(cell**& Grid) const {
     }
 }
 
+int mainGame2048::displaycell(int x, int y) {
+    return MainGrid[x][y].getValue();
+}
+
 // Генерация нового числа на поле
 void mainGame2048::new_number(cell**& grid) {
+    srand(time(NULL));
     while (true) {
         int x = rand() % GridSize;
         int y = rand() % GridSize;
@@ -176,6 +183,21 @@ void mainGame2048::playGame2048() {
         default: cout << "Invalid input. Try again.\n"; continue;
         }
         system("cls");
+    }
+}
+char mainGame2048::playGame2048(char a) {
+    if (isGameEnd(MainGrid)) {
+        return 'L';
+    }
+
+        switch (a) {
+        case 'w': verticalMove(MainGrid, 0); new_number(MainGrid); break;
+        case 'a': horizontalMove(MainGrid, 0); new_number(MainGrid); break;
+        case 's': verticalMove(MainGrid, 1); new_number(MainGrid); break;
+        case 'd': horizontalMove(MainGrid, 1); new_number(MainGrid); break;
+        case 'q': return 'L';
+        default:  return 'N';
+        
     }
 }
 

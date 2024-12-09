@@ -70,7 +70,7 @@ void mainGame2048::squash_array(cell col[GridSize], bool key)
                 if (src < 0)
                     break;
                 if (col[dest].getValue() == col[src].getValue()) {
-                    col[dest].setValue(col[dest].getValue() * 2);
+                    col[dest].setValue(col[dest].getValue() << 1);
                     col[src].setValue(0);
                 }
                 if (col[dest].getValue() == 0) {
@@ -87,7 +87,7 @@ void mainGame2048::squash_array(cell col[GridSize], bool key)
                 if (src > GridSize - 1)
                     break;
                 if (col[dest].getValue() == col[src].getValue()) {
-                    col[dest].setValue(col[dest].getValue() * 2);
+                    col[dest].setValue(col[dest].getValue() << 1);
                     col[src].setValue(0);
                 }
                 if (col[dest].getValue() == 0) {
@@ -113,7 +113,7 @@ bool mainGame2048::isGameEnd(cell** grid) const {
 void mainGame2048::displayGrid(cell**& Grid) const {
     for (int i = 0; i < GridSize; i++) {
         for (int j = 0; j < GridSize; j++) {
-            printf("%d ", Grid[i][j].getValue());
+            printf("%d\t", Grid[i][j].getValue());
         }
         cout << endl;
     }
